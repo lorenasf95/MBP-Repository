@@ -1,0 +1,28 @@
+<template>
+    <template if:true={recordId}>
+        <lightning-quick-action-panel header="Reasignar Lead">
+                <template if:true={isLoading}>
+                    <div >
+                        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                    </div>
+                </template>
+                <div class="alturaDiv slds-m-bottom_xx-large">
+                    <!--DESPLEGABLE-->
+                    <lightning-combobox
+                            name="Asignar Usuario"
+                            label="Asignar usuario"
+                            placeholder="Seleccione un usuario"
+                            options={opciones}
+                            onchange={handleChange}
+                            required
+                    ></lightning-combobox>
+                </div>
+                <div slot="footer">
+                    <!--BOTÓN PARA CANCELAR-->
+                    <lightning-button variant="brand" class="slds-m-left_x-small" aria-label="Cancel and close" onclick={cerrarModal} label="Cancelar"></lightning-button>
+                    <!--BOTÓN PARA GUARDAR EL USUARIO SELECCIONADO-->
+                    <lightning-button variant="brand" class="slds-m-left_x-small" onclick={actualizarPropietario} label="Guardar"></lightning-button>
+                </div>
+        </lightning-quick-action-panel>
+    </template>
+</template>

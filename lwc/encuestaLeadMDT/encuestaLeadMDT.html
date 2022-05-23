@@ -1,0 +1,51 @@
+<template>
+    <div >
+        <lightning-card title={cabecera} >
+            
+            <!--BARRA DE PROGRESO-->
+            <div class="slds-m-bottom_small">
+                <lightning-progress-indicator current-step={currentStep} type="base" variant="base">
+
+                    <template for:each={stepProgreso} for:item="progreso">
+                        <lightning-progress-step label={progreso.label} value={progreso.value} key={progreso.value}></lightning-progress-step>
+                    </template>
+
+                </lightning-progress-indicator>
+            </div>
+            
+
+            <!--MOSTRAR ENCUESTA 1-->
+            <div>
+                <p class="slds-text-align_center slds-m-around_x-small slds-text-heading_small">{pregunta}</p>
+                <div class="slds-p-horizontal_small slds-align_absolute-center slds-dimension step">
+                        <lightning-badge label="1" data-valor="1" icon-name="custom:custom11" class="slds-badge slds-badge_lightest slds-var-m-around_medium mouse" icon-position="end" onclick={almacenarPuntuacion}></lightning-badge>
+                        <lightning-badge label="2" data-valor="2" icon-name="custom:custom11" class="slds-badge slds-badge_lightest slds-var-m-around_medium mouse" icon-position="end" onclick={almacenarPuntuacion}></lightning-badge>
+                        <lightning-badge label="3" data-valor="3" icon-name="custom:custom11" class="slds-badge slds-badge_lightest slds-var-m-around_medium mouse" icon-position="end" onclick={almacenarPuntuacion}></lightning-badge>
+                        <lightning-badge label="4" data-valor="4" icon-name="custom:custom11" class="slds-badge slds-badge_lightest slds-var-m-around_medium mouse" icon-position="end" onclick={almacenarPuntuacion}></lightning-badge>
+                        <lightning-badge label="5" data-valor="5" icon-name="custom:custom11" class="slds-badge slds-badge_lightest slds-var-m-around_medium mouse" icon-position="end" onclick={almacenarPuntuacion}></lightning-badge>
+                </div>
+                <div slot="footer" class="slds-align_absolute-center">
+                    <lightning-button variant="brand" label="Siguiente" title="Botón siguiente" onclick={nextButton} class="boton1 slds-m-around_x-small" disabled={boton1Disabled}></lightning-button>
+                </div>
+            </div>
+
+
+            <!--AGRADECIMIENTO-->
+            <template if:true={agradecimiento}>
+                <p class="slds-text-align_center slds-m-around_x-small slds-text-heading_small">
+                    Muchas gracias por ayudarnos a mejorar. 
+                </p>
+                <p class="slds-text-align_center slds-m-around_x-small slds-text-heading_small">
+                    La puntuación media que nos has dado sería: 
+                </p>
+                <div class="slds-p-horizontal_small slds-align_absolute-center  ">
+                    <lightning-badge label={promedio} value={promedio} icon-name="custom:custom11" class="slds-badge slds-badge_lightest slds-var-m-around_medium" icon-position="end"></lightning-badge>
+                </div>
+            </template>
+        </lightning-card>
+    </div>
+    
+
+        
+
+</template>
