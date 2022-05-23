@@ -1,0 +1,17 @@
+/*style*/
+
+.cambiarFondo {
+    background-color: #009EDB
+}
+
+.mouse:hover{
+  cursor: pointer;
+  background-color: #009EDB;
+}
+
+.slds-dimension {
+    max-height: 40rem !important;
+    height: 5rem !important;
+    max-width: 80rem !important;
+    width: auto !important;
+}

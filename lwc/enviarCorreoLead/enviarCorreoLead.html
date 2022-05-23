@@ -1,0 +1,44 @@
+<template>
+    
+    <lightning-card title="Enviar correo">
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input type="email" label="Email address" value={email}  disabled required></lightning-input>
+            <lightning-input type="text" label="Asunto" placeholder="Indique el asunto" onchange={habilitarBotones} class="asunto" required></lightning-input>
+            <lightning-textarea name="CuerpoEmail" label="Cuerpo Email" onchange={habilitarBotones} class="cuerpo" placeholder="Escriba aquí..." required></lightning-textarea>
+            <div class="slds-p-around_medium lgc-bg">
+                <!--BOTÓN PARA ADJUNTAR FICHEROS-->
+                <template if:true={mostrarAdjuntos}>
+                    <!--<lightning-input type="file" label="Adjuntar archivos" accept="image/png, image/jpg, .zip, .pdf, .docx, .xlsx"></lightning-input>-->
+                    <lightning-file-upload
+                        label="Adjuntar documento"
+                        name="fileUploader"
+                        accept={acceptedFormats}
+                        onuploadfinished={handleUploadFinished}
+                        multiple
+                    ></lightning-file-upload>
+                    <p>*Solo es posible enviar archivos con formato jpg, png, pdf, docx, xlsx.*</p>
+
+                    <p> Listado de ficheros subidos: </p>
+                    <ul>
+                        <template for:each={listadoNameDocumentos} for:item="documento">
+                            <li key={documento}>{documento}</li>
+                        </template>
+                    </ul>
+                </template>
+                <div class="slds-m-around_medium">
+                    <div class="slds-m-left_x-small slds-float_left">
+                        <lightning-button variant="destructive" label="Borrar" title="Borrar datos correo" icon-name="utility:delete" icon-position="end" disabled={disabledButtons} onclick={borrarContenidoEmail}></lightning-button>
+                    </div>
+                    <div class="slds-m-left_x-small slds-float_right">
+                        <lightning-button variant="brand" label="Enviar" title="Enviar correo" icon-name="utility:send" icon-position="end" disabled={disabledButtons} onclick={sendEmailAfterEvent}></lightning-button>
+                        <template if:true={isLoading}>
+                            <div >
+                                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

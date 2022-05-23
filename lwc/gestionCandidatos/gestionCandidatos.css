@@ -1,0 +1,38 @@
+img {
+    max-height: 10rem;
+    max-width: 10rem;
+    height: auto;
+    width: auto;
+    border: 2px solid #d8dde6;
+}
+
+
+.borde {
+    border-radius: 10px;
+    box-shadow: 0 0 15px #65CAE4;
+    background: #fff;
+}
+
+.rechazado {
+    background-color: #CA3E4B;
+    color: white;
+    text-align: center;
+}
+
+.aceptado {
+    background-color: #44A54D;
+    color: white;
+    text-align: center;
+}
+
+.contactado {
+    background-color: #D3A529;
+    color: white;
+    text-align: center;
+}
+
+.abierto {
+    background-color: #2991D3;
+    color: white;
+    text-align: center;
+}

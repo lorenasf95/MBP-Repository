@@ -1,0 +1,44 @@
+<template>
+    <!--SPINNER DE CARGA-->
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </template>
+
+    <!--BOTÓN CONVERTIR LEAD-->
+    <div class="slds-m-around_x-medium">
+        <lightning-card>
+            <div class="slds-align_absolute-center slds-m-bottom_large">
+                <lightning-button variant="brand" label="Convertir Lead" title="ConvertirLead" icon-name="utility:change_owner" class="slds-m-left_x-small" onclick={transformarLead}></lightning-button>
+                <lightning-button variant="brand" label="Rechazar Lead" title="RechazarLead" icon-name="utility:cancel_transfer" class="slds-m-left_x-small" onclick={estadoRechazado}></lightning-button>
+            </div>
+        </lightning-card>
+    </div>
+
+    <!--CARTAS DE CANDIDATOS-->
+    <div>
+        <lightning-layout size="12" multiple-rows class="slds-m-around_x-medium">
+            <template for:each={lCandidatos} for:item="candidato">
+                <lightning-layout-item flexibility="auto" size="2" class="slds-m-around_large card" key={candidato.id}>
+                    <div>
+                        <lightning-card>
+                            <h3 slot="title" class="slds-text-align_center">
+                                <lightning-icon icon-name="action:user" size="small"></lightning-icon>
+                                &nbsp;Candidato
+                            </h3>
+                            <img src={avatarPNG} alt="avatarIcon" class="slds-align_absolute-center">
+                            <footer class={candidato.claseFooter}>
+                                <p class="slds-p-horizontal_small">Nombre: {candidato.nombre}</p>
+                                <p class="slds-p-horizontal_small">Apellidos: {candidato.apellidos}</p>
+                                <p class="slds-p-horizontal_small">Fecha de creación: {candidato.fechaCreacion}</p>
+                                <p class="slds-p-horizontal_small">Estado: {candidato.estado}</p>
+                                <div>
+                                    <lightning-input type="checkbox" class="slds-float_right" value={candidato.id} onchange={handleChange}></lightning-input>
+                                </div>
+                            </footer>
+                        </lightning-card>
+                    </div>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+    </div>
+</template>
