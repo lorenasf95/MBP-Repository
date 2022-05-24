@@ -5,7 +5,7 @@ trigger TaskTrigger on Task (before insert, before update, after insert, after u
 
 		}
 		if(Trigger.isUpdate){
-
+			TaskTriggerClass.verificarOportunidades(Trigger.new,Trigger.old);
 		}
 	}
 
