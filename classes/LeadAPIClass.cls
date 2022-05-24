@@ -28,7 +28,7 @@ global class LeadAPIClass  {
 		candidato.Email = datosLead.email;
 		candidato.provincia__c = datosLead.provincia;
 		candidato.LeadSource = datosLead.origen;
-		candidato.Company = 'Cliente Web';
+		candidato.Company = datosLead.nombre + ' ' + datosLead.apellidos;
 		candidato.numDocumento__c = datosLead.numDocumento;
 
 		//Le asignamos el recordType correspondiente.
