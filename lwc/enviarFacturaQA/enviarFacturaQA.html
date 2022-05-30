@@ -1,0 +1,18 @@
+<template>
+    <lightning-quick-action-panel  header="Enviar Factura">
+        <template if:true={isLoading}>
+            <div >
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </template>
+        <h1><b>Fecha fin de contrato</b></h1>
+        <div >
+            <lightning-input type="date" date-style="short" name="Fecha fin de contrato" label="Por favor, introduzca la fecha de fin de contrato" value="" required onchange={handleChange}></lightning-input>
+        </div>
+        <div slot="footer" >
+            <!--BOTÓN PARA GUARDAR LA FECHA, ENVIAR A SAP Y MANDAR CORREO AL CLIENTE PARA LA CITA-->
+            <!--Se lanzará a SAP la fecha para su verificación y se enviará un correo automático al cliente para citarle.-->
+            <lightning-button variant="brand" class="slds-m-left_x-small slds-align_absolute-center" onclick={enviarSAP} label="Enviar"></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>
