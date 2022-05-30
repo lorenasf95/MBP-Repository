@@ -82,6 +82,21 @@ public class Utilidades  {
 		return respuesta;
 	}
 
+	public static HttpResponse makeRequest(String endpoint, String metodo, String body){
+        System.debug('### MakeRequest EndPoint ' + endpoint);
+        System.debug('### MakeRequest Metodo ' + metodo);
+        System.debug('### MakeRequest Body ' + body);
+        String url = endpoint;
+        Http http = new Http();
+        HTTPRequest req = new HTTPRequest();
+        req.setEndPoint(url);
+        req.setBody(body);
+        req.setMethod(metodo);
+        HttpResponse response = http.send(req);
+        return response;
+    }
+
+
 
 	public class InfoRespuesta{
 		@AuraEnabled public Boolean success;
